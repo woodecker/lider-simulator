@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class PanelController : MonoBehaviour {
 
 	public GameObject[] panels;
@@ -43,4 +44,6 @@ public class PanelController : MonoBehaviour {
 		timer.maxValue = panels.Length;
 		timer.value = currentPanel;
 	}
+
+
 }

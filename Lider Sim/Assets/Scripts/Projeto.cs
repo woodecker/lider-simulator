@@ -19,6 +19,6 @@ public class Projeto : MonoBehaviour {
 
 	void Update(){
 		orcamentoText.text = "R$ " + orcamento.ToString ();
-		lucrosText.text = "R$ " + orcamento.ToString ();
+		//lucrosText.text = "R$ " + orcamento.ToString ();
 	}
 }
