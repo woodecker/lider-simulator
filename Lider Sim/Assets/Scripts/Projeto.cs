@@ -5,9 +5,16 @@ using UnityEngine.UI;
 
 public class Projeto : MonoBehaviour {
 
+	public static Projeto Instance;
+
 	public int orcamento = 50000;
 	public Text orcamentoText;
 	public Text lucrosText;
+
+	void Awake(){
+		if (Instance == null)
+			Instance = this;
+	}
 
 	public void Contratar(int salario){
 		orcamento -= salario;
