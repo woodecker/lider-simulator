@@ -11,6 +11,9 @@ public class Projeto : MonoBehaviour {
 	public Text orcamentoText;
 	public Text lucrosText;
 
+	public List<Servico> currentServicos;
+	public List<Perfil> Equipe;
+
 	void Awake(){
 		if (Instance == null)
 			Instance = this;
