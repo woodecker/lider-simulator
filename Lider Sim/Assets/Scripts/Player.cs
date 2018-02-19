@@ -12,6 +12,8 @@ public class Player : MonoBehaviour {
 
 	public int nCaracteristicas = 0;
 
+	public int lucros;
+
 	void Awake(){
 		if (Instance == null)
 			Instance = this;
@@ -31,6 +33,23 @@ public class Player : MonoBehaviour {
 	public void CaracteristicaLeisse(int pontos){
 		pontosLA += pontos;
 		nCaracteristicas++;
+	}
+
+	public string PerfilLideranca()
+	{
+		if (pontosAT > pontosDE) {
+			if (pontosAT > pontosLA) {
+				return "AUTORITARIO";
+			} else {
+				return "Laissez-faire";
+			}
+		} else {
+			if (pontosDE > pontosLA) {
+				return "DEMOCRATICO";
+			} else {
+				return "Laissez-faire";
+			}
+		}
 	}
 
 }
