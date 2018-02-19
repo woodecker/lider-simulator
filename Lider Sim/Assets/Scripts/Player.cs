@@ -19,24 +19,18 @@ public class Player : MonoBehaviour {
 
 	public void CaracteristicaAutoritaria(int pontos){
 		pontosAT += pontos;
-		AddCaracteristica ();
+		nCaracteristicas++;
 
 	}
 
 	public void CaracteristicaDemocratica(int pontos){
 		pontosDE += pontos;
-		AddCaracteristica ();
+		nCaracteristicas++;
 	}
 
 	public void CaracteristicaLeisse(int pontos){
 		pontosLA += pontos;
-		AddCaracteristica ();
+		nCaracteristicas++;
 	}
 
-	void AddCaracteristica(){
-		nCaracteristicas++;
-		if (nCaracteristicas >= 3) {
-			PanelController.Instance.NextPanel ();
-		}
-	}
 }
