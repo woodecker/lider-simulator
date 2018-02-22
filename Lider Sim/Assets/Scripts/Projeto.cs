@@ -25,6 +25,10 @@ public class Projeto : MonoBehaviour {
 	public Text etapa;
 	public Slider timer;
 
+	const float T_NEWDAY = 30f;
+	float newDayTime = 30f;
+	bool paused = true;
+
 	void Awake ()
 	{
 		if (Instance == null)
@@ -43,9 +47,17 @@ public class Projeto : MonoBehaviour {
 
 	void Update ()
 	{
+		if (!paused)
+			newDayTime -= Time.deltaTime;
+
+		if (newDayTime <= 0f) {
+			NewDay ();
+			newDayTime = T_NEWDAY;
+		}
+
 		orcamentoText.text = "R$ " + orcamento.ToString ();
 
-		if (timer.value <= 1)
+		if (timer.value <= timer.minValue)
 			etapa.text = "PRE-PRODUÇÃO";
 		else if (timer.value <= 29)
 			etapa.text = "PRODUÇÃO";
@@ -55,7 +67,15 @@ public class Projeto : MonoBehaviour {
 
 	public void StartProject ()
 	{
-		InvokeRepeating ("NewDay", 0f, 30f);
+		paused = false;
+
+		dias++;
+		timer.value = dias;
+	}
+
+	public void ContinueProject ()
+	{
+		paused = false;
 	}
 
 	public void NewDay ()
@@ -63,11 +83,41 @@ public class Projeto : MonoBehaviour {
 		dias++;
 		timer.value = dias;
 
-		organizacao++;
-		programacao++;
-		design++;
-		criatividade++;
-		energy++;
+		//para cada perfil somar pontos no total do projeto
+		foreach(Perfil p in Equipe)
+		{
+			organizacao += p.organizacao;
+			programacao += p.programacao;
+			design += p.design;
+			criatividade += p.criatividade;
+			energy++;
+		}
+
+		//Dia de pagamento, 7 meses projeto
+		if (dias % 4 == 0)
+		{
+			foreach(Perfil p in Equipe){
+				orcamento -= p.salario;
+			}
+		}
+
+		if(dias == 30)
+		{
+			Fungus.Flowchart.BroadcastFungusMessage ("TempoAcabado");
+			paused = true;
+		}
+		else if (dias % 7 == 0)
+		{
+			Fungus.Flowchart.BroadcastFungusMessage ("NovoMinigame");
+			paused = true;
+		}
+		else if (dias % 5 == 0)
+		{
+			Fungus.Flowchart.BroadcastFungusMessage ("NovaCrise");
+			paused = true;
+		}
+
+
 	}
 
 	public void Contratar (int salario)

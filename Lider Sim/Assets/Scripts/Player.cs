@@ -52,4 +52,21 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	public string PerfilLiderancaDesc()
+	{
+		if (pontosAT > pontosDE) {
+			if (pontosAT > pontosLA) {
+				return "Parabéns na resolução de problemas, só tente ser menos autoritário.";
+			} else {
+				return "Tente organizar melhor o projeto e os trabalhadores.";
+			}
+		} else {
+			if (pontosDE > pontosLA) {
+				return "Muito bem. Você se destaca como líder.";
+			} else {
+				return "Tente organizar melhor o projeto e os trabalhadores.";
+			}
+		}
+	}
+
 }

@@ -12,6 +12,8 @@ public class PanelRelatorio : MonoBehaviour {
 	public Text lucros;
 
 	public Text lideranca;
+	public Text liderancaDesc;
+	public Text pontosDesc;
 
 	void Update()
 	{
@@ -22,5 +24,11 @@ public class PanelRelatorio : MonoBehaviour {
 		lucros.text = Projeto.Instance.orcamento.ToString ();
 
 		lideranca.text = "Perfil de Liderança: " + Player.Instance.PerfilLideranca ();
+		liderancaDesc.text = Player.Instance.PerfilLiderancaDesc ();
+
+		if(Projeto.Instance.Produtividade () < 50)
+			pontosDesc.text = "Tente contratar mais serviços pro trabalhador.";
+		else
+			pontosDesc.text = "Seus trabalhadores estão contentes e souberam dar o melhor de si.";
 	}
 }
