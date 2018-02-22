@@ -7,6 +7,7 @@ public class Perfil : ScriptableObject {
 
 	public string name;
 	public Sprite avatar;
+	public Sprite body;
 	[TextAreaAttribute]
 	public string description;
 	public int organizacao = 100;
