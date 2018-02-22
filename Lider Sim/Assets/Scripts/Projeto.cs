@@ -37,6 +37,8 @@ public class Projeto : MonoBehaviour {
 
 	void Start ()
 	{
+		Time.timeScale = 3f;
+
 		orcamentoInicial = orcamento;
 
 		orcamentoText.text = "R$ " + orcamento.ToString ();
@@ -124,15 +126,24 @@ public class Projeto : MonoBehaviour {
 	{
 		orcamento -= salario;
 	}
-		
-	public int PontosProjeto ()
+
+	//Distribuição dos pontos dos perfis
+	public string PontosProjeto ()
 	{
-		return (organizacao + programacao + design + criatividade) / 4;
+		return "Organização " + (organizacao / dias / 10).ToString() + "/" + Equipe.Count * 10  + 
+			" Programação " + (programacao / dias / 10).ToString() + "/" + Equipe.Count * 10  + 
+			" Design " + (design / dias / 10).ToString() + "/" + Equipe.Count * 10  + 
+			" Criatividade " + (criatividade / dias / 10).ToString() + "/" + Equipe.Count * 10;
 	}
 
-	public int Produtividade()
+	//Aumenta se contratou serviços e resolveu minigames
+	public float Produtividade()
 	{
-		return energy;
+		float p = 50f;
+		foreach(Servico s in currentServicos){
+			p = p * s.productivityInc;
+		}
+		return p;
 	}
 
 }

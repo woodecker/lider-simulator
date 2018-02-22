@@ -10,4 +10,5 @@ public class Servico : ScriptableObject {
 	public string description;
 	public int cost;
 	public int energy;
+	public float productivityInc;
 }
