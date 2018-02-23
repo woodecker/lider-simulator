@@ -29,6 +29,8 @@ public class Projeto : MonoBehaviour {
 	float newDayTime = 30f;
 	bool paused = true;
 
+	public GameObject painelTarefas;
+
 	void Awake ()
 	{
 		if (Instance == null)
@@ -69,6 +71,8 @@ public class Projeto : MonoBehaviour {
 
 	public void StartProject ()
 	{
+		painelTarefas.SetActive (true);
+
 		paused = false;
 
 		dias++;
@@ -108,11 +112,11 @@ public class Projeto : MonoBehaviour {
 			Fungus.Flowchart.BroadcastFungusMessage ("TempoAcabado");
 			paused = true;
 		}
-		else if (dias % 7 == 0)
+		/*else if (dias % 7 == 0)
 		{
 			Fungus.Flowchart.BroadcastFungusMessage ("NovoMinigame");
 			paused = true;
-		}
+		}*/
 		else if (dias % 5 == 0)
 		{
 			Fungus.Flowchart.BroadcastFungusMessage ("NovaCrise");
@@ -130,10 +134,13 @@ public class Projeto : MonoBehaviour {
 	//Distribuição dos pontos dos perfis
 	public string PontosProjeto ()
 	{
-		return "Organização " + (organizacao / dias / 10).ToString() + "/" + Equipe.Count * 10  + 
-			" Programação " + (programacao / dias / 10).ToString() + "/" + Equipe.Count * 10  + 
-			" Design " + (design / dias / 10).ToString() + "/" + Equipe.Count * 10  + 
-			" Criatividade " + (criatividade / dias / 10).ToString() + "/" + Equipe.Count * 10;
+		if (dias > 0)
+			return "Organização " + (organizacao / dias / 10).ToString () + "/" + Equipe.Count * 10 +
+			" Programação " + (programacao / dias / 10).ToString () + "/" + Equipe.Count * 10 +
+			" Design " + (design / dias / 10).ToString () + "/" + Equipe.Count * 10 +
+			" Criatividade " + (criatividade / dias / 10).ToString () + "/" + Equipe.Count * 10;
+		else
+			return "";
 	}
 
 	//Aumenta se contratou serviços e resolveu minigames
