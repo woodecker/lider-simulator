@@ -13,7 +13,13 @@ public class AnswerButton : MonoBehaviour {
 		answer = a;
 		panel = p;
 
-		GetComponentInChildren<Text> ().text = answer.answer;
+		string ans = answer.answer;
+		ans = ans.Replace ("XXXX", "Laura");
+		ans = ans.Replace ("ZZZ", "Marta");
+		ans = ans.Replace ("MM", "Carlos");
+		ans = ans.Replace ("LLL", "Joao");
+
+		GetComponentInChildren<Text> ().text = ans;
 	}
 
 	public void SelectAnswer ()

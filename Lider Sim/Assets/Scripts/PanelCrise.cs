@@ -18,7 +18,13 @@ public class PanelCrise : MonoBehaviour {
 	{
 		currentCrise = CriseController.Instance.RandomCrise ();
 
-		question.text = currentCrise.question;
+		string q = currentCrise.question;
+		q = q.Replace ("XXXX", "Laura");
+		q = q.Replace ("ZZZ", "Marta");
+		q = q.Replace ("MM", "Carlos");
+		q = q.Replace ("LLL", "Joao");
+
+		question.text = q;
 
 		//Create answers
 		foreach (Answers a in currentCrise.answers) {
@@ -32,7 +38,13 @@ public class PanelCrise : MonoBehaviour {
 
 	public void SetFeedback (string message)
 	{
-		feedback.text = message;
+		string q = message;
+		q = q.Replace ("XXXX", "Laura");
+		q = q.Replace ("ZZZ", "Marta");
+		q = q.Replace ("MM", "Carlos");
+		q = q.Replace ("LLL", "Joao");
+
+		feedback.text = q;
 		closeButton.SetActive (true);
 
 		foreach(GameObject b in myButtons){
