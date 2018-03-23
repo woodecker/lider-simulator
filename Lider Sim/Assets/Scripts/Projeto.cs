@@ -62,11 +62,11 @@ public class Projeto : MonoBehaviour {
 		orcamentoText.text = "R$ " + orcamento.ToString ();
 
 		if (timer.value <= timer.minValue)
-			etapa.text = "PRE-PRODUÇÃO";
+			etapa.text = "Pré-produção";
 		else if (timer.value <= 29)
-			etapa.text = "PRODUÇÃO";
+			etapa.text = "Produção";
 		else
-			etapa.text = "POS-PRODUÇÃO";
+			etapa.text = "Pós-produção";
 	}
 
 	public void StartProject ()
