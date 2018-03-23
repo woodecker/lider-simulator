@@ -43,10 +43,15 @@ public class Projeto : MonoBehaviour {
 
 		orcamentoInicial = orcamento;
 
-		orcamentoText.text = "R$ " + orcamento.ToString ();
+		orcamentoText.text = Orcamento();
 
 		timer.maxValue = 30;
 		timer.value = dias;
+	}
+
+	string Orcamento(){
+		decimal numb = orcamento;
+		return "R$ " + numb.ToString("N");
 	}
 
 	void Update ()
@@ -59,7 +64,7 @@ public class Projeto : MonoBehaviour {
 			newDayTime = T_NEWDAY;
 		}
 
-		orcamentoText.text = "R$ " + orcamento.ToString ();
+		orcamentoText.text = Orcamento();
 
 		if (timer.value <= timer.minValue)
 			etapa.text = "Pré-produção";
