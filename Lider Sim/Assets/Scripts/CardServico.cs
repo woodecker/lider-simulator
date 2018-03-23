@@ -17,8 +17,8 @@ public class CardServico : MonoBehaviour {
 	{
 		name.text = s.name;
 		desc.text = s.description;
-		cost.text = s.cost.ToString();
-		power.text = s.energy.ToString();
+		cost.text = "CUSTO: R$" + s.cost.ToString() + "";
+		power.text = "ENERGIA: +" + s.energy.ToString() + "%";
 
 		myServico = s;
 	}

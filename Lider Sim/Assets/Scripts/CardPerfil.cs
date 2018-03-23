@@ -27,13 +27,13 @@ public class CardPerfil : MonoBehaviour {
 		name.text = s.name;
 		desc.text = s.description;
 
-		organizacao.text = "ORG." + s.organizacao.ToString();
-		programacao.text = "PROG." + s.programacao.ToString();
-		design.text = "DES." + s.design.ToString();
-		criatividade.text = "CRIA." + s.criatividade.ToString();
+		organizacao.text = "ORGANIZAÇÃO: " + s.organizacao.ToString();
+		programacao.text = "PROGRAMAÇÃO: " + s.programacao.ToString();
+		design.text = "DESIGN: " + s.design.ToString();
+		criatividade.text = "CRIATIVIDADE: " + s.criatividade.ToString();
 
-		cost.text = "SALARIO." + s.salario.ToString();
-		power.text = "ENERGIA 100%";
+		cost.text = "SALARIO: R$" + s.salario.ToString();
+		power.text = "ENERGIA: 100%";
 
 		avatar.sprite = s.avatar;
 
