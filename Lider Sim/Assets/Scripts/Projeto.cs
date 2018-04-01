@@ -30,6 +30,7 @@ public class Projeto : MonoBehaviour {
 	bool paused = true;
 
 	public GameObject painelTarefas;
+	public GameObject painelFooter;
 
 	void Awake ()
 	{
@@ -66,12 +67,14 @@ public class Projeto : MonoBehaviour {
 
 		orcamentoText.text = Orcamento();
 
-		if (timer.value <= timer.minValue)
+		if (timer.value <= timer.minValue) {
 			etapa.text = "Pré-produção";
-		else if (timer.value <= 29)
+		} else if (timer.value <= 29) {
 			etapa.text = "Produção";
-		else
+			painelFooter.SetActive (true);
+		} else {
 			etapa.text = "Pós-produção";
+		}
 	}
 
 	public void StartProject ()
