@@ -39,13 +39,13 @@ public class Player : MonoBehaviour {
 	{
 		if (pontosAT > pontosDE) {
 			if (pontosAT > pontosLA) {
-				return "AUTORITARIO";
+				return "AUTORITÁRIO";
 			} else {
 				return "Laissez-faire";
 			}
 		} else {
 			if (pontosDE > pontosLA) {
-				return "DEMOCRATICO";
+				return "DEMOCRÁTICO";
 			} else {
 				return "Laissez-faire";
 			}
