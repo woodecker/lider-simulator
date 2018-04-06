@@ -1,9 +1,10 @@
-﻿﻿using System.Collections; 
+﻿using System.Collections; 
 using System.Collections.Generic; 
 using UnityEngine; 
 using System.IO; 
 using Fungus; 
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
 
 [System.Serializable] 
 public class Notes 
@@ -61,15 +62,28 @@ public class LoadJson : MonoBehaviour {
 				level = notas;
 			}
 
-			nota1.text = loadedData.nota1;
-			nota2.text = loadedData.nota2; 
-			nota3.text = loadedData.nota3; 
+			nota1.text = loadedData.nota1.Replace ("\\n", "\n").Replace ("\\r", "\r");
+			nota2.text = loadedData.nota2.Replace ("\\n", "\n").Replace ("\\r", "\r");
+			nota3.text = loadedData.nota3.Replace ("\\n", "\n").Replace ("\\r", "\r");
+
+			ShowUrl (nota1.text);
+			ShowUrl (nota2.text);
+			ShowUrl (nota3.text);
 		} 
 		else 
 		{ 
 			Debug.LogError("Cannot load game data!"); 
 		} 
-	} 
+	}
+
+	void ShowUrl(string textWithUrl)
+	{
+		//foreach (Match item in Regex.Matches(textWithUrl, @"(http|ftp|https):\/\/([\w\-_]+(?:(?:\.[\w\-_]+)+))([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?"))
+		foreach (Match item in Regex.Matches(textWithUrl, @"(http|ftp|https):\/\/([\w\-_]+(?:(?:\.[\w\-_]+)+))([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?"))
+		{
+			Debug.Log(item.Value);
+		}
+	}
 
 	string ManageText(string InText){
 		int cIndex = InText.IndexOf ("\n");

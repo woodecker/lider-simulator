@@ -1,6 +1,6 @@
 {
 	"quantidadeAnotacoes": "3",
-	"nota1": "Anotação 01 sobre liderança http://www.google.com" ,
-	"nota2": "Anotação 02 sobre liderança http://www.google.com" ,
-	"nota3": "Anotação 03 sobre liderança http://www.google.com" 
+	"nota1": "Anotação 01\\r\\ndo professor 01 - \\r\\n\\r\\nteste 1" ,
+	"nota2": "Anotação 02 - \\r\\nteste 2\\r\\n\\r\\nhttp://www.google.com" ,
+	"nota3": "Minha Anotação 03 - \\r\\nteste 3 \\r\\n\\r\\n27/03/2018" 
 }
