@@ -32,6 +32,11 @@ public class Projeto : MonoBehaviour {
 	public GameObject painelTarefas;
 	public GameObject painelFooter;
 
+	public Text orgUI;
+	public Text progUI;
+	public Text dsgnUI;
+	public Text criatUI;
+
 	void Awake ()
 	{
 		if (Instance == null)
@@ -131,7 +136,10 @@ public class Projeto : MonoBehaviour {
 			paused = true;
 		}
 
-
+		orgUI.text = organizacao.ToString ();
+		progUI.text = programacao.ToString ();
+		dsgnUI.text = design.ToString ();
+		criatUI.text = criatividade.ToString ();
 	}
 
 	public void Contratar (int salario)
