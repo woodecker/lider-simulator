@@ -46,7 +46,12 @@ public class LoadJson : MonoBehaviour {
 		// Application.StreamingAssets points to Assets/StreamingAssets in the Editor, and the StreamingAssets folder in a build 
 		//string filePath = Path.Combine(Application.streamingAssetsPath, gameDataFileName); 
 		//string filePath = Path.Combine(Application.dataPath + "/Resources/", gameDataFileName); 
+
+		#if UNITY_STANDALONE_OSX
+		string filePath = Path.Combine(Application.dataPath + "/Data/Assets/Resources/", gameDataFileName);
+		#else
 		string filePath = Path.Combine("Assets/Resources/", gameDataFileName); 
+		#endif
 
 		if(File.Exists(filePath)) 
 		{ 

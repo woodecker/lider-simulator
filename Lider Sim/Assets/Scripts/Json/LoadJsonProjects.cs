@@ -25,8 +25,14 @@ public class LoadJsonProjects : MonoBehaviour {
 		// Path.Combine combines strings into a file path 
 		// Application.StreamingAssets points to Assets/StreamingAssets in the Editor, and the StreamingAssets folder in a build 
 		//string filePath = Path.Combine(Application.streamingAssetsPath, gameDataFileName); 
+
 		//string filePath = Path.Combine(Application.dataPath + "/Resources/", gameDataFileName); 
+
+		#if UNITY_STANDALONE_OSX
+		string filePath = Path.Combine(Application.dataPath + "/Data/Assets/Resources/", gameDataFileName);
+		#else
 		string filePath = Path.Combine("Assets/Resources/", gameDataFileName); 
+		#endif
 
 		if(File.Exists(filePath)) 
 		{ 
@@ -40,13 +46,22 @@ public class LoadJsonProjects : MonoBehaviour {
 
 			switch (rnd) {
 			case 0:
-				flow.SetStringVariable ("Projeto", loadedData.nota1);
+				string[] p1 = loadedData.nota1.Split (';');
+				flow.SetStringVariable ("Projeto", p1 [0]);
+				flow.SetStringVariable ("Orcamento", p1 [1]);
+				Projeto.Instance.orcamento = int.Parse (p1[1]);
 				break;
 			case 1:
-				flow.SetStringVariable ("Projeto", loadedData.nota2);
+				string[] p2 = loadedData.nota2.Split (';');
+				flow.SetStringVariable ("Projeto", p2[0]);
+				flow.SetStringVariable ("Orcamento", p2[1]);
+				Projeto.Instance.orcamento = int.Parse (p2[1]);
 				break;
 			case 2:
-				flow.SetStringVariable ("Projeto", loadedData.nota3);
+				string[] p3 = loadedData.nota3.Split (';');
+				flow.SetStringVariable ("Projeto", p3[0]);
+				flow.SetStringVariable ("Orcamento", p3[1]);
+				Projeto.Instance.orcamento = int.Parse (p3[1]);
 				break;
 			}
 		} 
