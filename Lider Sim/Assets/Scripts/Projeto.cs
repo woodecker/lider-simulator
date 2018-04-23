@@ -43,6 +43,8 @@ public class Projeto : MonoBehaviour {
 	public SpriteRenderer buddy4;
 	public SpriteRenderer buddy5;
 
+	public Button btnRelatorioPrevio;
+
 	void Awake ()
 	{
 		if (Instance == null)
@@ -113,6 +115,8 @@ public class Projeto : MonoBehaviour {
 		} else {
 			etapa.text = "Pós-produção";
 		}
+
+		btnRelatorioPrevio.interactable = (dias > 3);
 	}
 
 	public void StartProject ()
@@ -149,7 +153,7 @@ public class Projeto : MonoBehaviour {
 		if (dias % 4 == 0)
 		{
 			foreach(Perfil p in Equipe){
-				orcamento -= p.salario;
+				orcamento -= p.salario / 4;
 			}
 		}
 
@@ -188,6 +192,38 @@ public class Projeto : MonoBehaviour {
 			" Programação " + (programacao / dias / 10).ToString () + "/" + Equipe.Count * 10 +
 			" Design " + (design / dias / 10).ToString () + "/" + Equipe.Count * 10 +
 			" Criatividade " + (criatividade / dias / 10).ToString () + "/" + Equipe.Count * 10;
+		else
+			return "";
+	}
+
+	public string PontosOR ()
+	{
+		if (dias > 0)
+			return (organizacao / dias / 10) + "/" + Equipe.Count * 10;
+		else
+			return "";
+	}
+
+	public string PontosPR ()
+	{
+		if (dias > 0)
+			return (programacao / dias / 10) + "/" + Equipe.Count * 10;
+		else
+			return "";
+	}
+
+	public string PontosDE ()
+	{
+		if (dias > 0)
+			return (design / dias / 10) + "/" + Equipe.Count * 10;
+		else
+			return "";
+	}
+
+	public string PontosCR ()
+	{
+		if (dias > 0)
+			return (criatividade / dias / 10) + "/" + Equipe.Count * 10;
 		else
 			return "";
 	}

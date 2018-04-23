@@ -5,7 +5,11 @@ using UnityEngine.UI;
 
 public class PanelRelatorio : MonoBehaviour {
 
-	public Text pontosProjeto;
+	public Text pontosOR;
+	public Text pontosPR;
+	public Text pontosDE;
+	public Text pontosCR;
+
 	public Text produtividade;
 
 	public Text orcamento;
@@ -17,19 +21,23 @@ public class PanelRelatorio : MonoBehaviour {
 
 	void Update()
 	{
-		pontosProjeto.text = Projeto.Instance.PontosProjeto ();
+		pontosOR.text = Projeto.Instance.PontosOR ();
+		pontosOR.text = Projeto.Instance.PontosPR ();
+		pontosOR.text = Projeto.Instance.PontosDE ();
+		pontosOR.text = Projeto.Instance.PontosCR ();
+
 		produtividade.text = Projeto.Instance.Produtividade ().ToString () + "%";
 
 		orcamento.text = Money(Projeto.Instance.orcamentoInicial);
 		lucros.text = Money(Projeto.Instance.orcamento);
 
-		lideranca.text = "Perfil de Liderança: " + Player.Instance.PerfilLideranca ();
+		lideranca.text = Player.Instance.PerfilLideranca ();
 		liderancaDesc.text = Player.Instance.PerfilLiderancaDesc ();
 
-		if(Projeto.Instance.Produtividade () <= 51f)
-			pontosDesc.text = "Tente contratar mais serviços pro trabalhador.";
+		if(Projeto.Instance.Produtividade () <= 75f)
+			pontosDesc.text = "Para o próximo projeto tente contratar mais bonificações para os trabalhadores.";
 		else
-			pontosDesc.text = "Seus trabalhadores estão contentes e souberam dar o melhor de si.";
+			pontosDesc.text = "Seus trabalhadores estão contentes e conseguem dar o melhor de si.";
 	}
 
 	string Money(int money){

@@ -12,7 +12,7 @@ public class Player : MonoBehaviour {
 
 	public int nCaracteristicas = 0;
 
-	public int lucros;
+	//public int lucros;
 
 	void Awake(){
 		if (Instance == null)
@@ -54,19 +54,20 @@ public class Player : MonoBehaviour {
 
 	public string PerfilLiderancaDesc()
 	{
-		if (pontosAT > pontosDE) {
-			if (pontosAT > pontosLA) {
-				return "Parabéns na resolução de problemas, só tente ser menos autoritário.";
+		if (Projeto.Instance.orcamento > 1000) {
+			if (pontosAT > pontosDE) {
+				return "Parabéns na resolução de problemas, mas tente ser menos autoritário.";
 			} else {
-				return "Tente organizar melhor o projeto e os trabalhadores.";
+				return "Muito bem. Você se destacou como líder.";
 			}
 		} else {
-			if (pontosDE > pontosLA) {
-				return "Muito bem. Você se destaca como líder.";
-			} else {
+			if (pontosLA > pontosDE) {
 				return "Tente organizar melhor o projeto e os trabalhadores.";
+			} else {
+				return "Faltou um controle maior dos gastos.";
 			}
 		}
+
 	}
 
 }
