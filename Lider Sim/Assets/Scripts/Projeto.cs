@@ -25,8 +25,8 @@ public class Projeto : MonoBehaviour {
 	public Text etapa;
 	public Slider timer;
 
-	const float T_NEWDAY = 5f;
-	float newDayTime = 5f;
+	const float T_NEWDAY = 3f;
+	float newDayTime = 3f;
 	bool paused = true;
 
 	public GameObject painelTarefas;
