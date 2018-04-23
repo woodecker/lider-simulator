@@ -47,5 +47,6 @@ public class CardPerfil : MonoBehaviour {
 		buyButton.GetComponent<Image> ().color = Color.green;
 
 		Projeto.Instance.Equipe.Add (myPerfil);
+		Projeto.Instance.ShowProfile (myPerfil.body);
 	}
 }

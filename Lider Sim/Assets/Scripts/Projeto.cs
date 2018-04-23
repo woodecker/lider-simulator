@@ -37,6 +37,12 @@ public class Projeto : MonoBehaviour {
 	public Text dsgnUI;
 	public Text criatUI;
 
+	public SpriteRenderer buddy1;
+	public SpriteRenderer buddy2;
+	public SpriteRenderer buddy3;
+	public SpriteRenderer buddy4;
+	public SpriteRenderer buddy5;
+
 	void Awake ()
 	{
 		if (Instance == null)
@@ -45,6 +51,12 @@ public class Projeto : MonoBehaviour {
 
 	void Start ()
 	{
+		buddy1.sprite = null;
+		buddy2.sprite = null;
+		buddy3.sprite = null;
+		buddy4.sprite = null;
+		buddy5.sprite = null;
+
 		Time.timeScale = 3f;
 
 		orcamentoInicial = orcamento;
@@ -53,6 +65,27 @@ public class Projeto : MonoBehaviour {
 
 		timer.maxValue = 30;
 		timer.value = dias;
+	}
+
+	public void ShowProfile(Sprite body){
+		switch (Equipe.Count) {
+		case 1:
+			buddy1.sprite = body;
+			break;
+		case 2:
+			buddy2.sprite = body;
+			break;
+		case 3:
+			buddy3.sprite = body;
+			break;
+		case 4:
+			buddy4.sprite = body;
+			break;
+		case 5:
+			buddy5.sprite = body;
+			break;
+		}
+
 	}
 
 	string Orcamento(){
