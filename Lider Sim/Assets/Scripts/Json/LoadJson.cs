@@ -35,6 +35,9 @@ public class LoadJson : MonoBehaviour {
 	public Text nota1;
 	public Text nota2;
 	public Text nota3;
+	public GameObject btnNota1;
+	public GameObject btnNota2;
+	public GameObject btnNota3;
 
 	private string gameDataFileName = "anotacoes.json"; 
 
@@ -71,6 +74,13 @@ public class LoadJson : MonoBehaviour {
 			nota2.text = loadedData.nota2.Replace ("\\n", "\n").Replace ("\\r", "\r");
 			nota3.text = loadedData.nota3.Replace ("\\n", "\n").Replace ("\\r", "\r");
 
+			if (nota1.text.Equals (""))
+				btnNota1.SetActive (false);
+			if (nota2.text.Equals (""))
+				btnNota2.SetActive (false);
+			if (nota3.text.Equals (""))
+				btnNota3.SetActive (false);
+			
 			ShowUrl (nota1.text);
 			ShowUrl (nota2.text);
 			ShowUrl (nota3.text);
