@@ -14,22 +14,22 @@ public class PanelCrise : MonoBehaviour {
 	Crise currentCrise;
 	public List<GameObject> myButtons;
 
+	string randomName;
+
 	public void Start () 
 	{
 		currentCrise = CriseController.Instance.RandomCrise ();
 
 		string q = currentCrise.question;
-		q = q.Replace ("XXXX", "Laura");
-		q = q.Replace ("ZZZ", "Marta");
-		q = q.Replace ("MM", "Carlos");
-		q = q.Replace ("LLL", "Joao");
 
-		question.text = q;
+		randomName = Projeto.Instance.Equipe [Random.Range (0, Projeto.Instance.Equipe.Count)].name;
+
+		question.text = q.Replace ("{name1}", randomName);
 
 		//Create answers
 		foreach (Answers a in currentCrise.answers) {
 			GameObject newButton = Instantiate (answerButton, buttonParent);
-			newButton.GetComponent<AnswerButton> ().SetAnswer (a, this);
+			newButton.GetComponent<AnswerButton> ().SetAnswer (a, this, randomName);
 			myButtons.Add (newButton);
 		}
 
@@ -39,10 +39,7 @@ public class PanelCrise : MonoBehaviour {
 	public void SetFeedback (string message)
 	{
 		string q = message;
-		q = q.Replace ("XXXX", "Laura");
-		q = q.Replace ("ZZZ", "Marta");
-		q = q.Replace ("MM", "Carlos");
-		q = q.Replace ("LLL", "Joao");
+		q = q.Replace ("{name1}", randomName);
 
 		feedback.text = q;
 		closeButton.SetActive (true);

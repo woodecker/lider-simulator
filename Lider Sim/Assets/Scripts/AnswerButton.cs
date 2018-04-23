@@ -8,16 +8,13 @@ public class AnswerButton : MonoBehaviour {
 	private Answers answer;
 	private PanelCrise panel;
 
-	public void SetAnswer (Answers a, PanelCrise p)
+	public void SetAnswer (Answers a, PanelCrise p, string currentName)
 	{
 		answer = a;
 		panel = p;
 
 		string ans = answer.answer;
-		ans = ans.Replace ("XXXX", "Laura");
-		ans = ans.Replace ("ZZZ", "Marta");
-		ans = ans.Replace ("MM", "Carlos");
-		ans = ans.Replace ("LLL", "Joao");
+		ans = ans.Replace ("{name1}", currentName);
 
 		GetComponentInChildren<Text> ().text = ans;
 	}
