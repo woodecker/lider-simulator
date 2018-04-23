@@ -117,7 +117,7 @@ public class Projeto : MonoBehaviour {
 
 	public void StartProject ()
 	{
-		painelTarefas.SetActive (true);
+		//painelTarefas.SetActive (true);
 
 		paused = false;
 
