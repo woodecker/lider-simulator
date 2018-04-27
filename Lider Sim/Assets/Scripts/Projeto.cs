@@ -45,6 +45,8 @@ public class Projeto : MonoBehaviour {
 
 	public Button btnRelatorioPrevio;
 
+	bool openMenu;
+
 	void Awake ()
 	{
 		if (Instance == null)
@@ -97,7 +99,7 @@ public class Projeto : MonoBehaviour {
 
 	void Update ()
 	{
-		if (!paused)
+		if (!paused && !openMenu)
 			newDayTime -= Time.deltaTime;
 
 		if (newDayTime <= 0f) {
@@ -236,6 +238,10 @@ public class Projeto : MonoBehaviour {
 			p = p * s.productivityInc;
 		}
 		return p;
+	}
+
+	public void Pause(bool isPaused){
+		openMenu = isPaused;
 	}
 
 }
