@@ -32,7 +32,7 @@ public class CardPerfil : MonoBehaviour {
 		design.text = "DESIGN: " + s.design.ToString();
 		criatividade.text = "CRIATIVIDADE: " + s.criatividade.ToString();
 
-		cost.text = "SALARIO: R$" + s.salario.ToString();
+		cost.text = "SALÁRIO: R$" + s.salario.ToString();
 		power.text = "ENERGIA: 100%";
 
 		avatar.sprite = s.avatar;
