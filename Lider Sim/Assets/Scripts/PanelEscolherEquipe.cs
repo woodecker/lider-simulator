@@ -8,6 +8,7 @@ public class PanelEscolherEquipe : MonoBehaviour {
 	public RectTransform parentPerfil;
 
 	public List<GameObject> myPerfis;
+	public GameObject buttonNext;
 
 	public void Start () 
 	{
@@ -19,4 +20,7 @@ public class PanelEscolherEquipe : MonoBehaviour {
 		}
 	}
 
+	void Update(){
+		buttonNext.SetActive (Projeto.Instance.Equipe.Count > 2);
+	}
 }
